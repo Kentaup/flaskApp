@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{name}}のページ</title>
+  </head>
+  <a href="/logout">ログアウトする</a>
+  <body>
+    <h2>{{name}}のページ</h2>
+    <h1>Webアプリ初心者のFlaskチュートリアル</h1>
+
+    <form action="/changeName" method="post" id="changeName">
+        <input type="text" name="new_name" placeholder="New name">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Rename">
+    </form>
+
+    <img src="/static/images/ladys.jpg" alt="ladys">
+
+    <form action="/add" method="post">
+       <input type="text" name="title" placeholder="title">
+       <input type="text" name="body" placeholder="body">
+       <input type="submit" value="Add">
+   </form>
+
+   <form action="/update" method="post" id="update">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="body" placeholder="body">
+        <input type="submit" value="Update">
+    </form>
+
+    <form action="/delete" method="post" id="delete">
+        <input type="submit" value="Delete Selected All Onegai">
+    </form>
+    {% for onegai in all_onegai %}
+    <div>
+        <input type="radio" name="update" form="update" value={{onegai.id}}>
+        <input type="checkbox" name="delete" form="delete" value={{onegai.id}}>
+        {{onegai.title}}：{{onegai.body}}（{{onegai.date}}）
+    </div>
+    {% endfor %}
+  </body>
+</html>
